@@ -1,0 +1,1364 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Java - Lab Sheets</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/java.min.js"></script>
+    <style>
+      body {
+        background-color: #0f172a;
+      }
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+      .accordion-content.active {
+        max-height: 5000px;
+        transition: max-height 0.5s ease-in;
+      }
+      .rotate-icon {
+        transition: transform 0.3s ease;
+      }
+      .rotate-icon.active {
+        transform: rotate(180deg);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen">
+    <!-- Header -->
+    <header
+      class="bg-gradient-to-r from-gray-900 to-gray-800 border-b border-gray-700 shadow-xl"
+    >
+      <div class="container mx-auto px-4 py-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h1 class="text-3xl font-bold text-white">Advanced Java</h1>
+            <p class="text-gray-400 mt-1">Lab Sheets</p>
+          </div>
+          <a
+            href="index.html"
+            class="bg-red-400 text-white px-5 py-2.5 rounded-lg hover:bg-red-700 transition-colors font-semibold shadow-lg"
+          >
+            ← Back to Home
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+<div class="max-w-4xl mx-auto">
+  <div class="relative w-full aspect-video">
+    <video
+      class="absolute top-0 left-0 w-full h-full"
+      controls
+      preload="metadata">
+      
+      <source src="video.mp4" type="video/mp4">
+      <source src="video.webm" type="video/webm">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
+
+        <!-- Lab Sheet 2 -->
+        <div
+          class="bg-gray-800 rounded-lg shadow-xl mb-6 overflow-hidden border border-gray-700"
+        >
+          <!-- Accordion Header -->
+          <button
+            onclick="toggleAccordion('lab2')"
+            class="w-full bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-5 flex items-center justify-between hover:from-red-700 hover:to-red-800 transition-all"
+          >
+            <h2 class="text-2xl font-bold">
+              Lab 2: Connecting a Java Swing Application with an SQL Database
+              Using JDBC
+            </h2>
+            <svg
+              class="w-6 h-6 rotate-icon"
+              id="icon-lab2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </button>
+
+          <!-- Accordion Content -->
+          <div id="content-lab2" class="accordion-content">
+            <div class="p-6">
+              <!-- Objectives -->
+              <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                  <span
+                    class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold"
+                    >1</span
+                  >
+                  Objective
+                </h3>
+                <ul class="list-disc list-inside text-gray-300 space-y-2 ml-12">
+                  <li>To create a simple Java Swing application</li>
+                  <li>To connect the Swing application with an SQL database</li>
+                  <li>
+                    To understand tools, drivers, and steps required for JDBC
+                    connectivity
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Theory -->
+              <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                  <span
+                    class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold"
+                    >2</span
+                  >
+                  Theory
+                </h3>
+                <div class="text-gray-300 ml-12 leading-relaxed space-y-4">
+                  <p>
+                    Java Swing is a GUI (Graphical User Interface) toolkit used
+                    to build desktop applications in Java. To connect a Swing
+                    application with an SQL database, JDBC (Java Database
+                    Connectivity) is used.
+                  </p>
+
+                  <p>
+                    <strong>JDBC</strong> is an API that allows Java programs to
+                    connect and execute queries on databases such as MySQL,
+                    PostgreSQL, or SQLite.
+                  </p>
+
+                  <p><strong>Tools Used:</strong></p>
+                  <ul class="list-disc list-inside ml-4">
+                    <li>Java JDK – To write and run Java programs</li>
+                    <li>IDE (Eclipse / IntelliJ / NetBeans)</li>
+                    <li>MySQL Database – To store and retrieve data</li>
+                    <li>JDBC Driver (MySQL Connector/J)</li>
+                    <li>
+                      Swing Components – JFrame, JButton, JTextField, JLabel
+                    </li>
+                  </ul>
+
+                  <p><strong>Steps to Connect Swing with Database:</strong></p>
+                  <ol class="list-decimal list-inside ml-4 space-y-1">
+                    <li>Install MySQL and create a database</li>
+                    <li>Add MySQL JDBC Driver to the project</li>
+                    <li>Import required JDBC packages</li>
+                    <li>Load the JDBC driver</li>
+                    <li>Create a connection using DriverManager</li>
+                    <li>Execute SQL queries using PreparedStatement</li>
+                    <li>Display result in Swing UI</li>
+                    <li>Close the database connection</li>
+                  </ol>
+                </div>
+              </div>
+
+              <!-- Code -->
+              <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                  <span
+                    class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold"
+                    >3</span
+                  >
+                  Code
+                </h3>
+
+                <div class="ml-12 mb-6">
+                  <p class="text-gray-300 mb-2 font-semibold">Database Table</p>
+                  <pre
+                    class="rounded-lg overflow-hidden"
+                  ><code class="sql">CREATE DATABASE studentdb;
+
+USE studentdb;
+
+CREATE TABLE students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50)
+);</code></pre>
+                </div>
+
+                <div class="ml-12">
+                  <p class="text-gray-300 mb-2 font-semibold">
+                    Java Swing Program with JDBC
+                  </p>
+                  <pre
+                    class="rounded-lg overflow-hidden"
+                  ><code class="java">import javax.swing.*;
+import java.awt.event.*;
+import java.sql.*;
+
+public class SwingDBExample {
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Swing Database Connection");
+
+        JLabel lblId = new JLabel("ID:");
+        lblId.setBounds(20, 20, 80, 25);
+
+        JTextField txtId = new JTextField();
+        txtId.setBounds(100, 20, 150, 25);
+
+        JLabel lblName = new JLabel("Name:");
+        lblName.setBounds(20, 60, 80, 25);
+
+        JTextField txtName = new JTextField();
+        txtName.setBounds(100, 60, 150, 25);
+
+        JButton btnSave = new JButton("Save");
+        btnSave.setBounds(100, 100, 80, 30);
+
+        frame.add(lblId);
+        frame.add(txtId);
+        frame.add(lblName);
+        frame.add(txtName);
+        frame.add(btnSave);
+
+        btnSave.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+
+                    Connection con = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306/studentdb",
+                        "root",
+                        "password"
+                    );
+
+                    String sql = "INSERT INTO students VALUES (?, ?)";
+                    PreparedStatement ps = con.prepareStatement(sql);
+
+                    ps.setInt(1, Integer.parseInt(txtId.getText()));
+                    ps.setString(2, txtName.getText());
+
+                    ps.executeUpdate();
+
+                    JOptionPane.showMessageDialog(frame, "Data Inserted Successfully");
+
+                    con.close();
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(frame, ex.getMessage());
+                }
+            }
+        });
+
+        frame.setSize(350, 200);
+        frame.setLayout(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+}</code></pre>
+                </div>
+              </div>
+
+              <!-- Output -->
+              <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                  <span
+                    class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold"
+                    >4</span
+                  >
+                  Output
+                </h3>
+                <div class="ml-12 text-gray-300 space-y-2">
+                  <p>A Swing window appears with ID and Name input fields.</p>
+                  <p>After entering data and clicking <strong>Save</strong>:</p>
+                  <ul class="list-disc list-inside ml-4">
+                    <li>Data is inserted into the MySQL database</li>
+                    <li>
+                      A message box shows
+                      <strong>“Data Inserted Successfully”</strong>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Conclusion -->
+              <div>
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                  <span
+                    class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold"
+                    >5</span
+                  >
+                  Conclusion
+                </h3>
+                <p class="text-gray-300 ml-12 leading-relaxed">
+                  In this lab, a Java Swing application was successfully
+                  connected to an SQL database using JDBC. The program
+                  demonstrated interaction between GUI components and a database
+                  to store data. This experiment provides practical knowledge of
+                  real-world desktop application development using Java and
+                  database connectivity.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lab Sheet 3 -->
+<div class="bg-gray-800 rounded-lg shadow-xl mb-6 overflow-hidden border border-gray-700">
+    <!-- Accordion Header -->
+    <button onclick="toggleAccordion('lab3')" class="w-full bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-5 flex items-center justify-between hover:from-red-700 hover:to-red-800 transition-all">
+        <h2 class="text-2xl font-bold">
+            Lab 3: Menu Driven Java Program to Perform CRUD Operations on Employee Database Using JDBC
+        </h2>
+        <svg class="w-6 h-6 rotate-icon" id="icon-lab3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </button>
+
+    <!-- Accordion Content -->
+    <div id="content-lab3" class="accordion-content">
+        <div class="p-6">
+
+            <!-- Objective -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">1</span>
+                    Objective
+                </h3>
+                <ul class="list-disc list-inside text-gray-300 space-y-2 ml-12">
+                    <li>To create a Java program that connects to a database using JDBC</li>
+                    <li>To perform insert, update, delete, and display operations on employee records</li>
+                    <li>To understand menu-driven programming with database interaction</li>
+                    <li>To gain practical knowledge of CRUD operations in Java</li>
+                </ul>
+            </div>
+
+            <!-- Theory -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">2</span>
+                    Theory
+                </h3>
+                <p class="text-gray-300 ml-12 leading-relaxed">
+                    Java Database Connectivity (JDBC) is an API that enables Java applications to interact with
+                    relational databases such as MySQL. JDBC provides classes and interfaces to establish a
+                    connection with the database, execute SQL queries, and process the results.
+                    <br><br>
+                    A menu-driven program allows users to choose different operations at runtime.
+                    In this experiment, JDBC is used to perform CRUD (Create, Read, Update, Delete)
+                    operations on an employee table using SQL queries.
+                </p>
+            </div>
+
+            <!-- Code -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">3</span>
+                    Code
+                </h3>
+
+                <!-- Database Table -->
+                <div class="ml-12 mb-6">
+                    <p class="text-gray-300 mb-2 font-semibold">Employee Table (Database Setup – for reference)</p>
+                    <pre class="rounded-lg overflow-hidden"><code class="sql">CREATE DATABASE company;
+
+USE company;
+
+CREATE TABLE employee (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    salary DOUBLE,
+    branch VARCHAR(50)
+);</code></pre>
+                </div>
+
+                <!-- Java Program -->
+                <div class="ml-12">
+                    <p class="text-gray-300 mb-2 font-semibold">Java Program (Menu-Driven JDBC)</p>
+                    <pre class="rounded-lg overflow-hidden"><code class="java">import java.sql.*;
+import java.util.Scanner;
+
+public class Employee {
+
+    String url = "jdbc:mysql://localhost:3306/company?useSSL=false&serverTimezone=UTC";
+    String user = "root";
+    String password = "12345";
+
+    Connection con = null;
+    Statement stmt = null;
+    ResultSet rs = null;
+    Scanner sc = new Scanner(System.in);
+
+    void connect() throws Exception {
+        con = DriverManager.getConnection(url, user, password);
+        stmt = con.createStatement();
+    }
+
+    void insertEmployee() {
+        try {
+            connect();
+            System.out.print("Enter ID: ");
+            int id = sc.nextInt();
+            System.out.print("Enter Name: ");
+            String name = sc.next();
+            System.out.print("Enter Salary: ");
+            double salary = sc.nextDouble();
+            System.out.print("Enter Branch: ");
+            String branch = sc.next();
+
+            String query = "INSERT INTO employee VALUES (" + id + ",'" + name + "'," + salary + ",'" + branch + "')";
+            stmt.executeUpdate(query);
+            System.out.println("Employee Inserted Successfully!");
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    void updateSalary() {
+        try {
+            connect();
+            System.out.print("Enter ID: ");
+            int id = sc.nextInt();
+            System.out.print("Enter New Salary: ");
+            double salary = sc.nextDouble();
+
+            String query = "UPDATE employee SET salary=" + salary + " WHERE id=" + id;
+            stmt.executeUpdate(query);
+            System.out.println("Salary Updated!");
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    void updateName() {
+        try {
+            connect();
+            System.out.print("Enter ID: ");
+            int id = sc.nextInt();
+            System.out.print("Enter New Name: ");
+            String name = sc.next();
+
+            String query = "UPDATE employee SET name='" + name + "' WHERE id=" + id;
+            stmt.executeUpdate(query);
+            System.out.println("Name Updated!");
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    void updateBranch() {
+        try {
+            connect();
+            System.out.print("Enter ID: ");
+            int id = sc.nextInt();
+            System.out.print("Enter New Branch: ");
+            String branch = sc.next();
+
+            String query = "UPDATE employee SET branch='" + branch + "' WHERE id=" + id;
+            stmt.executeUpdate(query);
+            System.out.println("Branch Updated!");
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    void deleteEmployee() {
+        try {
+            connect();
+            System.out.print("Enter ID: ");
+            int id = sc.nextInt();
+
+            String query = "DELETE FROM employee WHERE id=" + id;
+            stmt.executeUpdate(query);
+            System.out.println("Employee Deleted!");
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    void displayEmployees() {
+        try {
+            connect();
+            String query = "SELECT * FROM employee";
+            rs = stmt.executeQuery(query);
+
+            System.out.println("ID\tName\tSalary\tBranch");
+            while (rs.next()) {
+                System.out.println(
+                        rs.getInt("id") + "\t" +
+                        rs.getString("name") + "\t" +
+                        rs.getDouble("salary") + "\t" +
+                        rs.getString("branch")
+                );
+            }
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Employee emp = new Employee();
+        Scanner sc = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("\\nEnter your choice...");
+            System.out.println("1. Insert employee");
+            System.out.println("2. Update salary");
+            System.out.println("3. Update name");
+            System.out.println("4. Update branch");
+            System.out.println("5. Delete employee");
+            System.out.println("6. Display all employee");
+            System.out.println("7. Exit");
+
+            choice = sc.nextInt();
+
+            switch (choice) {
+                case 1: emp.insertEmployee(); break;
+                case 2: emp.updateSalary(); break;
+                case 3: emp.updateName(); break;
+                case 4: emp.updateBranch(); break;
+                case 5: emp.deleteEmployee(); break;
+                case 6: emp.displayEmployees(); break;
+                case 7: System.out.println("Exiting Program..."); break;
+                default: System.out.println("Invalid Choice!");
+            }
+        } while (choice != 7);
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Output -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">4</span>
+                    Output
+                </h3>
+                <div class="ml-12 text-gray-300">
+                    <pre class="bg-gray-900 border border-gray-700 p-4 rounded-lg overflow-x-auto text-sm text-green-400 font-mono"><code>Enter your choice...
+1. Insert employee
+2. Update salary
+3. Update name
+4. Update branch
+5. Delete employee
+6. Display all employee
+7. Exit</code></pre>
+                </div>
+            </div>
+
+            <!-- Conclusion -->
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">5</span>
+                    Conclusion
+                </h3>
+                <p class="text-gray-300 ml-12 leading-relaxed">
+                    In this experiment, a menu-driven Java program was successfully developed using JDBC
+                    to perform CRUD operations on an employee database.
+                    The program demonstrated inserting, updating, deleting, and displaying employee records,
+                    helping to understand real-world database interaction using Java.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Lab Sheet 4 -->
+<div class="bg-gray-800 rounded-lg shadow-xl mb-6 overflow-hidden border border-gray-700">
+    <!-- Accordion Header -->
+    <button onclick="toggleAccordion('lab4')" class="w-full bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-5 flex items-center justify-between hover:from-red-700 hover:to-red-800 transition-all">
+        <h2 class="text-2xl font-bold">
+            Lab 4: Java Program to Call a Stored Procedure Using JDBC to Store Person Details
+        </h2>
+        <svg class="w-6 h-6 rotate-icon" id="icon-lab4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </button>
+
+    <!-- Accordion Content -->
+    <div id="content-lab4" class="accordion-content">
+        <div class="p-6">
+
+            <!-- Objective -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">1</span>
+                    Objective
+                </h3>
+                <ul class="list-disc list-inside text-gray-300 space-y-2 ml-12">
+                    <li>To create a stored procedure in a database</li>
+                    <li>To call the stored procedure from a Java program using JDBC</li>
+                    <li>To insert person details into a database table using a stored procedure</li>
+                </ul>
+            </div>
+
+            <!-- Theory -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">2</span>
+                    Theory
+                </h3>
+                <div class="text-gray-300 ml-12 leading-relaxed space-y-4">
+                    <p>
+                        A stored procedure is a set of SQL statements stored in the database and executed as a single unit.
+                        Stored procedures improve performance, security, and reusability of database operations.
+                    </p>
+
+                    <p>
+                        In Java, stored procedures are executed using <strong>CallableStatement</strong>, which is a part of JDBC.
+                        It allows Java programs to pass parameters to the database and execute predefined SQL logic.
+                    </p>
+
+                    <p><strong>Advantages of Stored Procedures:</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Faster execution</li>
+                        <li>Better security</li>
+                        <li>Code reusability</li>
+                        <li>Reduced SQL injection risk</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Code -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">3</span>
+                    Code
+                </h3>
+
+                <!-- Database Setup -->
+                <div class="ml-12 mb-6">
+                    <p class="text-gray-300 mb-2 font-semibold">Database Setup – Employee Table</p>
+                    <pre class="rounded-lg overflow-hidden"><code class="sql">CREATE DATABASE company;
+USE company;
+
+CREATE TABLE employee (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    age INT,
+    address VARCHAR(100)
+);</code></pre>
+                </div>
+
+                <!-- Stored Procedure -->
+                <div class="ml-12 mb-6">
+                    <p class="text-gray-300 mb-2 font-semibold">Stored Procedure</p>
+                    <pre class="rounded-lg overflow-hidden"><code class="sql">DELIMITER $$
+
+CREATE PROCEDURE insertPerson(
+    IN pid INT,
+    IN pname VARCHAR(50),
+    IN page INT,
+    IN paddress VARCHAR(100)
+)
+BEGIN
+    INSERT INTO employee VALUES (pid, pname, page, paddress);
+END $$
+
+DELIMITER ;</code></pre>
+                </div>
+
+                <!-- Java Program -->
+                <div class="ml-12">
+                    <p class="text-gray-300 mb-2 font-semibold">Java Program (Calling Stored Procedure)</p>
+                    <pre class="rounded-lg overflow-hidden"><code class="java">import java.sql.*;
+import java.util.Scanner;
+
+public class Person {
+
+    String url = "jdbc:mysql://localhost:3306/company?useSSL=false&serverTimezone=UTC";
+    String user = "root";
+    String password = "12345";
+
+    public void insertPerson() {
+        try {
+            Connection con = DriverManager.getConnection(url, user, password);
+            CallableStatement cs = con.prepareCall("{call insertPerson(?,?,?,?)}");
+
+            Scanner sc = new Scanner(System.in);
+
+            System.out.print("Enter ID: ");
+            cs.setInt(1, sc.nextInt());
+
+            System.out.print("Enter Name: ");
+            cs.setString(2, sc.next());
+
+            System.out.print("Enter Age: ");
+            cs.setInt(3, sc.nextInt());
+
+            System.out.print("Enter Address: ");
+            cs.setString(4, sc.next());
+
+            cs.execute();
+
+            System.out.println("Person Record Inserted Successfully!");
+
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public static void main(String[] args) {
+        Person p = new Person();
+        p.insertPerson();
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Output -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">4</span>
+                    Output
+                </h3>
+                <div class="ml-12">
+                    <pre class="bg-gray-900 border border-gray-700 p-4 rounded-lg overflow-x-auto text-sm text-green-400 font-mono"><code>Enter ID: 1
+Enter Name: Ram
+Enter Age: 22
+Enter Address: Kathmandu
+Person Record Inserted Successfully!</code></pre>
+                </div>
+            </div>
+
+            <!-- Conclusion -->
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">5</span>
+                    Conclusion
+                </h3>
+                <p class="text-gray-300 ml-12 leading-relaxed">
+                    In this experiment, a stored procedure was successfully created and invoked from a Java
+                    application using JDBC. The program demonstrated the use of CallableStatement to pass
+                    parameters and execute database logic stored in the database. This lab helps in understanding
+                    secure and efficient database operations using stored procedures in Java.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Lab Sheet 5 -->
+<div class="bg-gray-800 rounded-lg shadow-xl mb-6 overflow-hidden border border-gray-700">
+    <!-- Accordion Header -->
+    <button onclick="toggleAccordion('lab5')" class="w-full bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-5 flex items-center justify-between hover:from-red-700 hover:to-red-800 transition-all">
+        <h2 class="text-2xl font-bold">
+            Lab 5: Java Program to Demonstrate Scrollable and Updatable ResultSet
+        </h2>
+        <svg class="w-6 h-6 rotate-icon" id="icon-lab5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </button>
+
+    <!-- Accordion Content -->
+    <div id="content-lab5" class="accordion-content">
+        <div class="p-6">
+
+            <!-- Objective -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">1</span>
+                    Objective
+                </h3>
+                <ul class="list-disc list-inside text-gray-300 space-y-2 ml-12">
+                    <li>To understand the concept of scrollable ResultSet in JDBC</li>
+                    <li>To demonstrate updating database records using an updatable ResultSet</li>
+                    <li>To learn how Java can navigate and modify database records dynamically</li>
+                </ul>
+            </div>
+
+            <!-- Theory -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">2</span>
+                    Theory
+                </h3>
+                <div class="text-gray-300 ml-12 leading-relaxed space-y-4">
+                    <p>
+                        In JDBC, a <strong>ResultSet</strong> represents data retrieved from a database.
+                        By default, a ResultSet is forward-only and read-only. JDBC provides special
+                        ResultSet types that allow scrolling and updating of records.
+                    </p>
+
+                    <p><strong>Scrollable ResultSet</strong></p>
+                    <p>
+                        A scrollable ResultSet allows moving the cursor:
+                    </p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Forward</li>
+                        <li>Backward</li>
+                        <li>To a specific row</li>
+                        <li>To the first or last row</li>
+                    </ul>
+                    <p>
+                        This is achieved using:
+                        <br><strong>ResultSet.TYPE_SCROLL_INSENSITIVE</strong>
+                    </p>
+
+                    <p><strong>Updatable ResultSet</strong></p>
+                    <p>
+                        An updatable ResultSet allows modifying database records directly from Java
+                        without writing SQL UPDATE statements.
+                    </p>
+                    <p>
+                        This is achieved using:
+                        <br><strong>ResultSet.CONCUR_UPDATABLE</strong>
+                    </p>
+
+                    <p><strong>Common Cursor Methods:</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>next()</li>
+                        <li>previous()</li>
+                        <li>first()</li>
+                        <li>last()</li>
+                        <li>absolute(int row)</li>
+                        <li>updateXXX()</li>
+                        <li>updateRow()</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Code -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">3</span>
+                    Code
+                </h3>
+
+                <!-- Database Table -->
+                <div class="ml-12 mb-6">
+                    <p class="text-gray-300 mb-2 font-semibold">Database Table (Example)</p>
+                    <pre class="rounded-lg overflow-hidden"><code class="sql">CREATE TABLE employee (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    salary DOUBLE
+);</code></pre>
+                </div>
+
+                <!-- Java Program -->
+                <div class="ml-12">
+                    <p class="text-gray-300 mb-2 font-semibold">Java Program</p>
+                    <pre class="rounded-lg overflow-hidden"><code class="java">import java.sql.*;
+
+public class ScrollableUpdatableRS {
+
+    public static void main(String[] args) {
+        try {
+            String url = "jdbc:mysql://localhost:3306/company?useSSL=false&serverTimezone=UTC";
+            String user = "root";
+            String password = "12345";
+
+            Connection con = DriverManager.getConnection(url, user, password);
+
+            Statement stmt = con.createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE
+            );
+
+            ResultSet rs = stmt.executeQuery("SELECT * FROM employee");
+
+            // Scrollable ResultSet
+            System.out.println("First Record:");
+            rs.first();
+            System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getDouble(3));
+
+            System.out.println("Last Record:");
+            rs.last();
+            System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getDouble(3));
+
+            // Move to specific row
+            rs.absolute(2);
+            System.out.println("Second Record:");
+            System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getDouble(3));
+
+            // Updatable ResultSet
+            rs.updateDouble("salary", 50000);
+            rs.updateRow();
+            System.out.println("Salary Updated Successfully!");
+
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Output -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">4</span>
+                    Output
+                </h3>
+                <div class="ml-12">
+                    <pre class="bg-gray-900 border border-gray-700 p-4 rounded-lg overflow-x-auto text-sm text-green-400 font-mono"><code>First Record:
+1 Ram 30000
+
+Last Record:
+3 Hari 45000
+
+Second Record:
+2 Shyam 40000
+
+Salary Updated Successfully!</code></pre>
+                </div>
+            </div>
+
+            <!-- Conclusion -->
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">5</span>
+                    Conclusion
+                </h3>
+                <p class="text-gray-300 ml-12 leading-relaxed">
+                    In this experiment, the concepts of scrollable and updatable ResultSet were successfully
+                    demonstrated using JDBC. The scrollable ResultSet allowed cursor movement in different
+                    directions, while the updatable ResultSet enabled modification of database records directly
+                    from Java. This lab provides practical knowledge of advanced ResultSet operations in JDBC.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Lab Sheet 6 -->
+<div class="bg-gray-800 rounded-lg shadow-xl mb-6 overflow-hidden border border-gray-700">
+    <!-- Accordion Header -->
+    <button onclick="toggleAccordion('lab6')" class="w-full bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-5 flex items-center justify-between hover:from-red-700 hover:to-red-800 transition-all">
+        <h2 class="text-2xl font-bold">
+            Lab 6: Java Program to Demonstrate JavaBean and BeanInfo Interface
+        </h2>
+        <svg class="w-6 h-6 rotate-icon" id="icon-lab6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </button>
+
+    <!-- Accordion Content -->
+    <div id="content-lab6" class="accordion-content">
+        <div class="p-6">
+
+            <!-- Objective -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">1</span>
+                    Objective
+                </h3>
+                <ul class="list-disc list-inside text-gray-300 space-y-2 ml-12">
+                    <li>To create a JavaBean class with properties</li>
+                    <li>To understand JavaBean conventions such as no-argument constructor and getter/setter methods</li>
+                    <li>To use the BeanInfo interface to display properties and methods of a JavaBean</li>
+                </ul>
+            </div>
+
+            <!-- Theory -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">2</span>
+                    Theory
+                </h3>
+                <div class="text-gray-300 ml-12 leading-relaxed space-y-4">
+                    <p>
+                        A <strong>JavaBean</strong> is a reusable software component written in Java.
+                        JavaBeans are commonly used in component-based development and frameworks.
+                    </p>
+
+                    <p><strong>JavaBean Conventions:</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>It must have a public no-argument constructor</li>
+                        <li>All properties must be private</li>
+                        <li>It must provide public getter and setter methods</li>
+                        <li>It should be serializable (optional but recommended)</li>
+                    </ul>
+
+                    <p><strong>BeanInfo Interface:</strong></p>
+                    <p>
+                        The <strong>BeanInfo</strong> interface is part of the <code>java.beans</code> package.
+                        It provides information about a JavaBean such as:
+                    </p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Properties</li>
+                        <li>Methods</li>
+                        <li>Events</li>
+                    </ul>
+
+                    <p>
+                        The <strong>Introspector</strong> class is used to obtain the BeanInfo object of a JavaBean.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Code -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">3</span>
+                    Code
+                </h3>
+
+                <!-- JavaBean Class -->
+                <div class="ml-12 mb-6">
+                    <p class="text-gray-300 mb-2 font-semibold">JavaBean Class (User.java)</p>
+                    <pre class="rounded-lg overflow-hidden"><code class="java">import java.io.Serializable;
+
+public class User implements Serializable {
+
+    private String username;
+    private int age;
+    private String address;
+
+    // No-argument constructor
+    public User() {
+    }
+
+    // Getter and Setter methods
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+}</code></pre>
+                </div>
+
+                <!-- BeanInfo Program -->
+                <div class="ml-12">
+                    <p class="text-gray-300 mb-2 font-semibold">BeanInfo Demonstration Program</p>
+                    <pre class="rounded-lg overflow-hidden"><code class="java">import java.beans.*;
+
+public class BeanInfoDemo {
+
+    public static void main(String[] args) {
+        try {
+            BeanInfo beanInfo = Introspector.getBeanInfo(User.class);
+
+            System.out.println("Bean Class Name:");
+            System.out.println(beanInfo.getBeanDescriptor().getName());
+
+            System.out.println("\\nProperties:");
+            PropertyDescriptor[] properties = beanInfo.getPropertyDescriptors();
+            for (PropertyDescriptor pd : properties) {
+                System.out.println(pd.getName());
+            }
+
+            System.out.println("\\nMethods:");
+            MethodDescriptor[] methods = beanInfo.getMethodDescriptors();
+            for (MethodDescriptor md : methods) {
+                System.out.println(md.getName());
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Output -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">4</span>
+                    Output
+                </h3>
+                <div class="ml-12">
+                    <pre class="bg-gray-900 border border-gray-700 p-4 rounded-lg overflow-x-auto text-sm text-green-400 font-mono"><code>Bean Class Name:
+User
+
+Properties:
+address
+age
+username
+class
+
+Methods:
+getUsername
+setUsername
+getAge
+setAge
+getAddress
+setAddress
+wait
+equals
+toString
+hashCode</code></pre>
+                </div>
+            </div>
+
+            <!-- Conclusion -->
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">5</span>
+                    Conclusion
+                </h3>
+                <p class="text-gray-300 ml-12 leading-relaxed">
+                    In this experiment, a JavaBean class named <strong>User</strong> was successfully created
+                    by following JavaBean conventions. The BeanInfo interface along with the Introspector class
+                    was used to retrieve and display information about the bean’s properties and methods.
+                    This lab demonstrates Java’s built-in support for introspection and component-based development.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Lab Sheet 7 -->
+<div class="bg-gray-800 rounded-lg shadow-xl mb-6 overflow-hidden border border-gray-700">
+    <!-- Accordion Header -->
+    <button onclick="toggleAccordion('lab7')" class="w-full bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-5 flex items-center justify-between hover:from-red-700 hover:to-red-800 transition-all">
+        <h2 class="text-2xl font-bold">
+            Lab 7: Java Program to Demonstrate Serialization and Deserialization Using JavaBean
+        </h2>
+        <svg class="w-6 h-6 rotate-icon" id="icon-lab7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </button>
+
+    <!-- Accordion Content -->
+    <div id="content-lab7" class="accordion-content">
+        <div class="p-6">
+
+            <!-- Objective -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">1</span>
+                    Objective
+                </h3>
+                <ul class="list-disc list-inside text-gray-300 space-y-2 ml-12">
+                    <li>To understand the concept of serialization and deserialization in Java</li>
+                    <li>To serialize a JavaBean object and store it in a file</li>
+                    <li>To deserialize the object and retrieve the stored data</li>
+                    <li>To learn how Java supports object persistence</li>
+                </ul>
+            </div>
+
+            <!-- Theory -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">2</span>
+                    Theory
+                </h3>
+                <div class="text-gray-300 ml-12 leading-relaxed space-y-4">
+                    <p>
+                        <strong>Serialization</strong> is the process of converting an object into a byte stream
+                        so that it can be stored in a file or transmitted over a network.
+                        <strong>Deserialization</strong> is the reverse process of converting the byte stream
+                        back into an object.
+                    </p>
+
+                    <p><strong>In Java, serialization is achieved by:</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Implementing the <code>Serializable</code> interface</li>
+                        <li>Using <code>ObjectOutputStream</code> to write objects to a file</li>
+                        <li>Using <code>ObjectInputStream</code> to read objects from a file</li>
+                    </ul>
+
+                    <p><strong>JavaBean and Serialization:</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>The class must follow JavaBean conventions</li>
+                        <li>The class must implement the <code>Serializable</code> interface</li>
+                    </ul>
+
+                    <p><strong>Classes Used:</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Serializable</li>
+                        <li>FileOutputStream</li>
+                        <li>FileInputStream</li>
+                        <li>ObjectOutputStream</li>
+                        <li>ObjectInputStream</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Code -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">3</span>
+                    Code
+                </h3>
+
+                <!-- JavaBean Class -->
+                <div class="ml-12 mb-6">
+                    <p class="text-gray-300 mb-2 font-semibold">JavaBean Class (User.java)</p>
+                    <pre class="rounded-lg overflow-hidden"><code class="java">import java.io.Serializable;
+
+public class User implements Serializable {
+
+    private String username;
+    private int age;
+    private String address;
+
+    // No-argument constructor
+    public User() {
+    }
+
+    // Getter and Setter methods
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+}</code></pre>
+                </div>
+
+                <!-- Serialization Program -->
+                <div class="ml-12">
+                    <p class="text-gray-300 mb-2 font-semibold">Serialization and Deserialization Program</p>
+                    <pre class="rounded-lg overflow-hidden"><code class="java">import java.io.*;
+
+public class SerializationDemo {
+
+    public static void main(String[] args) {
+
+        try {
+            // Create User object
+            User u = new User();
+            u.setUsername("Ram");
+            u.setAge(22);
+            u.setAddress("Kathmandu");
+
+            // Serialization
+            FileOutputStream fos = new FileOutputStream("user.txt");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(u);
+            oos.close();
+            fos.close();
+
+            System.out.println("Object Serialized Successfully!");
+
+            // Deserialization
+            FileInputStream fis = new FileInputStream("user.txt");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            User userObj = (User) ois.readObject();
+            ois.close();
+            fis.close();
+
+            System.out.println("\\nDeserialized Object Data:");
+            System.out.println("Username: " + userObj.getUsername());
+            System.out.println("Age: " + userObj.getAge());
+            System.out.println("Address: " + userObj.getAddress());
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Output -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">4</span>
+                    Output
+                </h3>
+                <div class="ml-12">
+                    <pre class="bg-gray-900 border border-gray-700 p-4 rounded-lg overflow-x-auto text-sm text-green-400 font-mono"><code>Object Serialized Successfully!
+
+Deserialized Object Data:
+Username: Ram
+Age: 22
+Address: Kathmandu</code></pre>
+                </div>
+            </div>
+
+            <!-- Conclusion -->
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                    <span class="bg-red-400 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-3 text-sm font-bold">5</span>
+                    Conclusion
+                </h3>
+                <p class="text-gray-300 ml-12 leading-relaxed">
+                    In this experiment, serialization and deserialization were successfully demonstrated
+                    using a JavaBean class. The object state was stored into a file through serialization
+                    and later retrieved using deserialization. This program helps in understanding how
+                    Java supports object persistence and data storage using the Serializable interface.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 mt-12 py-6 border-t border-gray-800">
+      <div class="container mx-auto px-4 text-center text-gray-400">
+        <p>&copy; 2024 Lab Sheets Portal. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize syntax highlighting
+      hljs.highlightAll();
+
+      // Accordion toggle function
+      function toggleAccordion(id) {
+        const content = document.getElementById("content-" + id);
+        const icon = document.getElementById("icon-" + id);
+
+        content.classList.toggle("active");
+        icon.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>
